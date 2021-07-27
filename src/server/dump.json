@@ -388,6 +388,35 @@
       "date_modified": "2012-02-29T13:55:09-0800"
     }
   ],
+  "cart_templates": [
+    {
+      "id": 0,
+      "store": 0,
+      "description": "Cart Template",
+      "content": "",
+      "content_url": "",
+      "date_created": "2012-08-10T11:58:54-0700",
+      "date_modified": "2012-08-10T11:58:54-0700"
+    },
+    {
+      "id": 1,
+      "store": 0,
+      "description": "Second Cart Template",
+      "content": "<p>This is a twig content</p>",
+      "content_url": "",
+      "date_created": "2012-08-10T11:58:54-0700",
+      "date_modified": "2012-08-10T11:58:54-0700"
+    },
+    {
+      "id": 2,
+      "store": 0,
+      "description": "Third Cart Template",
+      "content": "",
+      "content_url": "https://example/com/twig-contet.html",
+      "date_created": "2012-08-10T11:58:54-0700",
+      "date_modified": "2012-08-10T11:58:54-0700"
+    }
+  ],
   "customer_portal_settings": [
     {
       "store": 0,
