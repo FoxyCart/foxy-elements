@@ -7,7 +7,7 @@ export function composeCartTemplate(doc: any) {
     .addLink('self', `${endpoint}/cart_templates/${id}`)
     .addLink('fx:store', `${endpoint}/stores/${store}`)
     .addLink('fx:template_sets', `${endpoint}/stores/${store}/template_sets`)
-    .addLink('fx:cache', `${endpoint}/stores/${store}/template_sets/${id}/cache`)
+    .addLink('fx:cache', `${endpoint}/cart_templates/${id}/cache`)
     .addLink('fx:encode', `${endpoint}/stores/${store}/encode`);
   return result;
 }
