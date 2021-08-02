@@ -14,6 +14,7 @@ import { composeTransaction } from './composers/composeTransaction';
 import { composeUser } from './composers/composeUser';
 import { getPagination } from '../getPagination';
 import { router } from '../router';
+import { composeTemplateCache } from './composers/composeTemplateCache';
 
 const endpoint = 'https://demo.foxycart.com/s/admin';
 export { endpoint, router, db, whenDbReady, DemoDatabase };
@@ -548,12 +549,16 @@ router.delete('/s/admin/users/:id', async ({ params, request }) => {
   return user;
 });
 
-router.get('s/admin/stores/:id/cart_templates/', async ({ params, request }) => {
+router.get('/s/admin/stores/:id/cart_templates', async ({ params, request }) => {
   return respondItems(db.cartTemplates, composeCartTemplate, request.url, 'fx:cart_templates');
 });
 
-router.get('/s/admin/stores/:storeId/cart_templates/:id', async ({ params }) => {
+router.get('/s/admin/cart_templates/:id', async ({ params }) => {
   return respondItemById(db.cartTemplates, parseInt(params.id), composeCartTemplate);
+});
+
+router.post('/s/admin/cart_templates/:id/cache', async ({ params, request }) => {
+  return new Response(JSON.stringify(composeTemplateCache()));
 });
 
 /**
