@@ -277,7 +277,7 @@
       "store_url": "http://example.com/",
       "receipt_continue_url": "",
       "store_email": "example@example.com",
-      "from_email": "nelson@murphy.com",
+      "from_email": "john.doe@example.com",
       "use_email_dns": false,
       "bcc_on_receipt_email": true,
       "smtp_config": "",
