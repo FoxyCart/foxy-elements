@@ -27,7 +27,7 @@ jobs:
           NPM_TOKEN: foobar
         run: npm pack --dry-run # npx semantic-release
       - name: Getting tag
-        run: git describe --tags $(git rev-list --tags --skip=1 --max-count=1)
+        run: git describe --tags $(git rev-list --tags --max-count=1)
       - name: Upload to s3cdn
         uses: Foxy/foxy-github-action-s3cdn@dev
         with:
