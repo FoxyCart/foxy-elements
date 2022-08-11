@@ -14,28 +14,32 @@ jobs:
         with:
           ssh-key: "${{ secrets.COMMIT_KEY }}"
           fetch-depth: 0
-#       - name: Setup Node.js
-#         uses: actions/setup-node@v1
-#         with:
-#           node-version: 14
-#       - name: Install dependencies
-#         run: npm ci
-#       - name: Release
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#           # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-#           NPM_TOKEN: foobar
-#         run: npm pack --dry-run # npx semantic-release
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - name: Install dependencies
+        run: npm ci
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: foobar
+        run: npm pack --dry-run # npx semantic-release
       - name: Getting tag
         id: get_tag
         run: |
+          echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`" >> $GITHUB_ENV
+          echo "git tag: ${GIT_TAG}"
           TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
-          echo ::set-output name=tag::${TAG}
-          echo "$tag"
+          echo "git tag 2: $TAG"
+          echo ::set-output name=tag::$TAG
+          echo ::set-output name=tags::${GIT_TAG}::$TAGS
+          echo "tags: $TAGS"
       - name: Upload to s3cdn
         uses: Foxy/foxy-github-action-s3cdn@dev
         with:
-          package-name: elements # optional: Default is repo name.
+          package-name: ${{ steps.vars.outputs.tags }} # optional: Default is repo name.
           tag-name: ${{ steps.vars.outputs.tag }}
         env:
           AWS_S3_CDN_BUCKET_NAME: ${{ secrets.AWS_S3_CDN_BUCKET_NAME }}
