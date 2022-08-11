@@ -34,7 +34,7 @@ jobs:
           TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
           echo "git tag 2: $TAG"
           echo ::set-output name=tag::$TAG
-          echo ::set-output name=tags::${env.GIT_TAG}::$TAGS
+          echo ::set-output name=tags::${{ env.GIT_TAG }}::$TAGS
           echo "tags: $TAGS"
       - name: Dump env
         run: env | sort
