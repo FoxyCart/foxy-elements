@@ -36,6 +36,12 @@ jobs:
           echo ::set-output name=tag::$TAG
           echo ::set-output name=tags::${GIT_TAG}::$TAGS
           echo "tags: $TAGS"
+      - name: Dump env
+        run: env | sort
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"  
       - name: Upload to s3cdn
         uses: Foxy/foxy-github-action-s3cdn@dev
         with:
