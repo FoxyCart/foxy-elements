@@ -30,7 +30,7 @@ jobs:
         run: |
           TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
           export FOO=bar
-          echo "::set-env name=FOO::$FOO"
+          echo "$FOO"
       - name: Upload to s3cdn
         uses: Foxy/foxy-github-action-s3cdn@dev
         with:
