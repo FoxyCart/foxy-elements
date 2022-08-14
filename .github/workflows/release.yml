@@ -36,6 +36,7 @@ jobs:
           echo ::set-output name=tag::$TAG
           echo ::set-output name=tags::${{ env.GIT_TAG }}::$TAGS
           echo "tags: $TAGS"
+          echo "env tags: ${{ env.GIT_TAG }}"
       - name: Dump env
         run: env | sort
       - name: Dump GitHub context
