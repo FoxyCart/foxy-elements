@@ -43,7 +43,7 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"  
-      - name: Upload to s3cdns
+      - name: Upload to s3cdn
         uses: Foxy/foxy-github-action-s3cdn@dev
         with:
           package-name: ${{ steps.vars.outputs.tags }} # optional: Default is repo name.
