@@ -6,7 +6,7 @@ on:
       - beta
 jobs:
   release:
-    name: Release
+    name: Releases
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout
