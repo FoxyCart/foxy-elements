@@ -25,11 +25,11 @@ jobs:
           # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TOKEN: foobar
         run: npm pack --dry-run # npx semantic-release
-      - name: Get latest tag name and set to env variable
+      - name: Get the latest tag name and set it to env variable
         run: |
           echo "LATEST_TAG_NAME=`echo $(git describe --tags --abbrev=0)`" >> $GITHUB_ENV
       - name: Upload to s3cdn
-        uses: Foxy/foxy-github-action-s3cdn@dev
+        uses: Foxy/foxy-github-action-s3cdn@main
         with:
           package-name: elements # optional: Default is repo name.
         env:
